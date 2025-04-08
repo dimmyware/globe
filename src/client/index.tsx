@@ -90,10 +90,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Where's everyone at?</h1>
+      <h1>Di mana semua orang??</h1>
       {counter !== 0 ? (
         <p>
-          <b>{counter}</b> {counter === 1 ? "person" : "people"} connected.
+          <b>{counter}</b> {counter === 1 ? "orang" : "people"} terhubung.
         </p>
       ) : (
         <p>&nbsp;</p>
@@ -107,9 +107,12 @@ function App() {
 
       {/* Let's give some credit */}
       <p>
-        Powered by <a href="https://cobe.vercel.app/">🌏 Cobe</a>,{" "}
-        <a href="https://www.npmjs.com/package/phenomenon">Phenomenon</a> and{" "}
+        Didukung oleh <a href="https://cobe.vercel.app/">🌏 Cobe</a>,{" "}
+        <a href="https://www.npmjs.com/package/phenomenon">Phenomenon</a> dan{" "}
         <a href="https://npmjs.com/package/partyserver/">🎈 PartyServer</a>
+      </p>
+      <p>
+        Source: <a href="https://github.com/dimmyware/globe/">GitHub</a>
       </p>
     </div>
   );
