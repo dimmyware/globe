@@ -4,7 +4,7 @@
   "name": "globe",
   "migrations": [
     {
-      "new_classes": ["Globe"],
+      "new_sqlite_classes": ["Globe"],
       "tag": "v1"
     }
   ],
