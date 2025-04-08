@@ -1,44 +1,40 @@
-# Multiplayer Globe App
+# Globe Multiplayer
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/globe)
-
-![Multiplayer Globe Template Preview](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/43100bd9-8e11-4c20-cc00-3bec86253f00/public)
+[![Deploy ke Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/globe)
 
 <!-- dash-content-start -->
 
-Using the power of [Durable Objects](https://developers.cloudflare.com/durable-objects/), this example shows website visitor locations in real-time. Anyone around the world visiting the [demo website](https://globe.templates.workers.dev) will be displayed as a dot on the globe! This template is powered by [PartyKit](https://www.partykit.io/).
+Dengan memanfaatkan kekuatan [Durable Objects](https://developers.cloudflare.com/durable-objects/), contoh ini menampilkan lokasi pengunjung website secara real-time. Siapa pun di dunia yang mengunjungi [demo website](https://globe.templates.workers.dev) akan ditampilkan sebagai titik di globe! Template ini didukung oleh [PartyKit](https://www.partykit.io/).
 
-## How It Works
+## Cara Kerja
 
-Each time someone visits the page, a WebSocket connection is opened with a Durable Object that manages the state of the globe. Visitors are placed on the globe based on the geographic location of their IP address, which is exposed as a [property on the initial HTTP request](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) that establishes the WebSocket connection.
+Setiap kali seseorang mengunjungi halaman, koneksi WebSocket dibuka dengan Durable Object yang mengelola status globe. Pengunjung ditempatkan di globe berdasarkan lokasi geografis alamat IP mereka, yang diekspos sebagai [properti pada permintaan HTTP awal](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties) yang membangun koneksi WebSocket.
 
-The Durable Object instance that manages the state of the globe runs in one location, and handles all incoming WebSocket connections. When a new connection is established, the Durable Object broadcasts the location of the new visitor to all other active visitors, and the client adds the new visitor to the globe visualization. When someone leaves the page and their connection is closed, the Durable Object similarly broadcasts their removal. The Durable Object instance remains active as long as there is at least one open connection. If all open connections are closed, the Durable Object instance is purged from memory and remains inactive until a new visitor lands on the page, opens a connection, and restarts the lifecycle.
+Instance Durable Object yang mengelola status globe berjalan di satu lokasi, dan menangani semua koneksi WebSocket yang masuk. Saat koneksi baru terbentuk, Durable Object menyiarkan lokasi pengunjung baru ke semua pengunjung aktif lainnya, dan klien menambahkan pengunjung baru ke visualisasi globe. Ketika seseorang meninggalkan halaman dan koneksinya ditutup, Durable Object juga menyiarkan penghapusan mereka. Instance Durable Object tetap aktif selama setidaknya ada satu koneksi terbuka. Jika semua koneksi ditutup, instance Durable Object dihapus dari memori dan tetap tidak aktif hingga pengunjung baru membuka halaman, membuka koneksi, dan memulai siklus hidup kembali.
 
-## More on Durable Objects
+## Lebih Lanjut tentang Durable Objects
 
-In this template, only one Durable Object instance is created, since all visitors should see updates from all other visitors, everywhere in the world. A more complex version of this application could instead show a map of the country the visitor is located in, and only display markers for other visitors who are located in the same country. In this case, a Durable Object instance would be created for each country, and the client would connect to and receive updates from the Durable Object instance corresponding to the visitor's country.
+Dalam template ini, hanya satu instance Durable Object yang dibuat, karena semua pengunjung harus melihat pembaruan dari pengunjung lain di seluruh dunia. Versi yang lebih kompleks dari aplikasi ini dapat menampilkan peta negara tempat pengunjung berada, dan hanya menampilkan penanda untuk pengunjung lain yang berada di negara yang sama. Dalam kasus ini, instance Durable Object akan dibuat untuk setiap negara, dan klien akan terhubung ke instance Durable Object yang sesuai dengan negara pengunjung.
 
-For this example, Durable Objects are used for synchronizing but not storing state. Since visitor connections are ephemeral, and tied to the in-memory lifespan of the Durable Object instance, there's no need to use persistent storage. However, a more complex version of this application could display the all-time visitor count, which needs to be persisted beyond the in-memory lifespan of the Durable Object. In this case, the Durable Object code would use the [Durable Object Storage API](https://developers.cloudflare.com/durable-objects/api/storage-api/) to persist the value of the counter.
+Untuk contoh ini, Durable Objects digunakan untuk menyinkronkan status tetapi tidak menyimpan status. Karena koneksi pengunjung bersifat sementara dan terikat pada masa hidup instance Durable Object di memori, tidak perlu menggunakan penyimpanan persisten. Namun, versi yang lebih kompleks dari aplikasi ini dapat menampilkan jumlah pengunjung sepanjang waktu, yang perlu dipertahankan di luar masa hidup Durable Object di memori. Dalam kasus ini, kode Durable Object akan menggunakan [Durable Object Storage API](https://developers.cloudflare.com/durable-objects/api/storage-api/) untuk mempertahankan nilai penghitung.
 
 <!-- dash-content-end -->
 
 ## Getting Started
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+Di luar repo ini, Anda dapat memulai proyek baru dengan template ini menggunakan [C3](https://developers.cloudflare.com/pages/get-started/c3/) (CLI `create-cloudflare`):
 
 ```
 npm create cloudflare@latest -- --template=cloudflare/templates/globe
 ```
 
-A live public deployment of this template is available at [https://globe.templates.workers.dev](https://globe.templates.workers.dev)
+## Langkah Setup
 
-## Setup Steps
-
-1. Install the project dependencies with a package manager of your choice:
+1. Install dependensi proyek dengan package manager pilihan Anda:
    ```bash
    npm install
    ```
-2. Deploy the project!
+2. Deploy proyek!
    ```bash
    npx wrangler deploy
    ```
