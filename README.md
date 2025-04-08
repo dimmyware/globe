@@ -4,7 +4,7 @@
 
 <!-- dash-content-start -->
 
-Dengan memanfaatkan kekuatan [Durable Objects](https://developers.cloudflare.com/durable-objects/), contoh ini menampilkan lokasi pengunjung website secara real-time. Siapa pun di dunia yang mengunjungi [demo website](https://globe.templates.workers.dev) akan ditampilkan sebagai titik di globe! Template ini didukung oleh [PartyKit](https://www.partykit.io/).
+Dengan memanfaatkan kekuatan [Durable Objects](https://developers.cloudflare.com/durable-objects/), contoh ini menampilkan lokasi pengunjung website secara real-time. Siapa pun di dunia yang mengunjungi [demo website](https://globe.dimas.fun) akan ditampilkan sebagai titik di globe! Template ini didukung oleh [PartyKit](https://www.partykit.io/).
 
 ## Cara Kerja
 
