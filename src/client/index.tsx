@@ -90,7 +90,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Di mana semua orang??</h1>
+      <h1>Di mana semua orang?</h1>
       {counter !== 0 ? (
         <p>
           <b>{counter}</b> {counter === 1 ? "orang" : "people"} terhubung.
